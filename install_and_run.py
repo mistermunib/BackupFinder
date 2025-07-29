@@ -25,13 +25,24 @@ class Colors:
 
 def print_banner():
     print(f"""
-{Colors.CYAN}{Colors.BOLD}
-╔══════════════════════════════════════════════════════════════╗
-║                BackupFinder Auto-Setup v1.0                 ║
-║          One-Command Installation & Execution Tool          ║
-║                   Author: MuhammadWaseem                     ║
-╚══════════════════════════════════════════════════════════════╝
-{Colors.END}""")
+{Colors.CYAN}
+
+oooooooooo.                      oooo                                .o88o.  o8o                    .o8                     
+`888'   `Y8b                     `888                                888 `"  `"'                   "888                     
+ 888     888  .oooo.    .ooooo.   888  oooo  oooo  oooo  oo.ooooo.  o888oo  oooo  ooo. .oo.    .oooo888   .ooooo.  oooo d8b 
+ 888oooo888' `P  )88b  d88' `"Y8  888 .8P'   `888  `888   888' `88b  888    `888  `888P"Y88b  d88' `888  d88' `88b `888""8P 
+ 888    `88b  .oP"888  888        888888.     888   888   888   888  888     888   888   888  888   888  888ooo888  888     
+ 888    .88P d8(  888  888   .o8  888 `88b.   888   888   888   888  888     888   888   888  888   888  888    .o  888     
+o888bood8P'  `Y888""8o `Y8bod8P' o888o o888o  `V88V"V8P'  888bod8P' o888o   o888o o888o o888o `Y8bod88P" `Y8bod8P' d888b    
+                                                          888                                                               
+                                                         o888o                                                              
+                                                                                                                            
+
+                                                                       
+{Colors.END}
+{Colors.BOLD}                        github.com/MuhammadWaseem29{Colors.END}
+
+{Colors.GREEN}[INF] BackupFinder Auto-Setup v1.0.0 (one-command installer){Colors.END}""")
 
 def log(message, color=Colors.BLUE):
     print(f"{color}[*] {message}{Colors.END}")
@@ -159,7 +170,7 @@ def main():
     known_args, backupfinder_args = parser.parse_known_args()
     
     if known_args.version:
-        print("BackupFinder Auto-Installer v1.0")
+        print("BackupFinder Auto-Installer v1.0.0")
         return
     
     print_banner()
@@ -181,7 +192,7 @@ def main():
     # Run BackupFinder
     run_backupfinder(backupfinder_args)
     
-    # Show usage info
+    # Show usage info if no args provided
     if not backupfinder_args:
         print(f"""
 {Colors.YELLOW}{Colors.BOLD}Quick Usage Examples:{Colors.END}
@@ -191,7 +202,11 @@ def main():
 
 {Colors.GREEN}BackupFinder is now installed! You can also run directly:{Colors.END}
   {Colors.CYAN}backupfinder -u example.com{Colors.END}
+
+{Colors.YELLOW}Use -h or --help for more information.{Colors.END}
         """)
+        print(f"{Colors.RED}[FTL] Program exiting: no target provided{Colors.END}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     try:
